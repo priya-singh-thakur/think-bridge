@@ -6,14 +6,14 @@ const webpackConfig = require('./webpack.config.js');
 const app = express();
 const compiler = webpack(webpackConfig);
 const bodyParser = require("body-parser");
-const Page = require('./routes/auth')
+const Page = require('./routes/item')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
  
 app.use(express.static(__dirname + '/www'));
 
-app.use('/api', Page)
+app.use('/user', Page)
  
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
